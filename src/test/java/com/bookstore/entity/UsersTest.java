@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class UsersTest {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
