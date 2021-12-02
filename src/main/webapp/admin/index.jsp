@@ -15,6 +15,38 @@
 
 <div align="center">
     <h2>Administrative Dashboard</h2>
+
+    <hr width="500px"/>
+
+    <div>
+        <h2><b>Quick Actions:</b></h2>
+        <b>
+            <a href="#">New Book</a> |
+            <a href="#">New User</a> |
+            <a href="#">New Category</a> |
+            <a href="#">New Customer</a>
+        </b>
+    </div>
+
+    <hr width="500px"/>
+
+    <div>
+        <h2><b>Recent Sales:</b></h2>
+    </div>
+
+    <hr width="500px"/>
+
+    <div>
+        <h2><b>Recent Reviews:</b></h2>
+    </div>
+
+    <hr width="500px"/>
+
+    <div>
+        <h2><b>Statics:</b></h2>
+    </div>
+
+    <hr width="500px"/>
 </div>
 
 <jsp:directive.include file="footer.jsp"/>
