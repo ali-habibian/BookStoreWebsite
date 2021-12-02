@@ -5,10 +5,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceException;
+import javax.persistence.*;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -58,6 +57,50 @@ class UserDAOTest {
         String actual = user.getPassword();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void test_get_user_found() {
+        Integer userId = 1;
+        Users user = userDAO.get(userId);
+        if (user != null)
+            System.out.println(user.getEmail());
+
+        assertNotNull(user);
+    }
+
+    @Test
+    void test_get_user_not_found() {
+        Integer userId = 99;
+        Users user = userDAO.get(userId);
+
+        if (user != null)
+            System.out.println(user.getEmail());
+
+        assertNull(user);
+    }
+
+    @Test
+    void test_delete_exist_user() {
+        Integer userId = 1;
+        userDAO.delete(userId);
+
+        Users user = userDAO.get(userId);
+
+        assertNull(user);
+    }
+
+    @Test
+    void test_delete_not_exist_user() {
+        Integer userId = 99;
+        assertThrows(EntityNotFoundException.class, () -> userDAO.delete(userId));
+    }
+
+    @Test
+    void test_list_all_users(){
+        List<Users> users = userDAO.listAll();
+        users.forEach(u -> System.out.println(u.getFullName()));
+        assertTrue(users.size() > 0);
     }
 
     @AfterAll

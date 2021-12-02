@@ -3,6 +3,9 @@ package com.bookstore.entity;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Users.findAll", query = "select u from Users u order by u.fullName")
+})
 public class Users {
     private Integer userId;
     private String email;
