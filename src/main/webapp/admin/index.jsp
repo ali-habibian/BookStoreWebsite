@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Ali Bookstore Administration</title>
+    <title>Bookstore Administration</title>
 </head>
 <body>
 <jsp:directive.include file="header.jsp"/>
