@@ -15,8 +15,10 @@
 
 <div align="center">
     <h2>Administrative Dashboard</h2>
+</div>
 
-    <hr width="500px"/>
+<div align="center">
+    <hr width="60%"/>
 
     <div>
         <h2><b>Quick Actions:</b></h2>
@@ -27,26 +29,32 @@
             <a href="#">New Customer</a>
         </b>
     </div>
+</div>
 
-    <hr width="500px"/>
+<div align="center">
+    <hr width="60%"/>
 
     <div>
         <h2><b>Recent Sales:</b></h2>
     </div>
+</div>
 
-    <hr width="500px"/>
+<div align="center">
+    <hr width="60%"/>
 
     <div>
         <h2><b>Recent Reviews:</b></h2>
     </div>
+</div>
 
-    <hr width="500px"/>
+<div align="center">
+    <hr width="60%"/>
 
     <div>
         <h2><b>Statics:</b></h2>
     </div>
 
-    <hr width="500px"/>
+    <hr width="60%"/>
 </div>
 
 <jsp:directive.include file="footer.jsp"/>

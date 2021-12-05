@@ -27,8 +27,8 @@ class UserDAOTest {
     @Test
     void test_create_user() {
         Users user = new Users();
-        user.setFullName("User Test");
-        user.setEmail("test@mail.com");
+        user.setFullName("User Test 3");
+        user.setEmail("test_3@mail.com");
         user.setPassword("12345");
 
         user = userDAO.create(user);
