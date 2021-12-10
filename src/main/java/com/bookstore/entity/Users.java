@@ -4,13 +4,22 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Users.findAll", query = "select u from Users u order by u.fullName")
+        @NamedQuery(name = "Users.findAll", query = "select u from Users u order by u.userId desc")
 })
 public class Users {
     private Integer userId;
     private String email;
     private String fullName;
     private String password;
+
+    public Users() {
+    }
+
+    public Users(String email, String fullName, String password) {
+        this.email = email;
+        this.fullName = fullName;
+        this.password = password;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
