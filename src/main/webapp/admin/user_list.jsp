@@ -22,6 +22,10 @@
 </div>
 
 <div align="center">
+    <h4><i>${message}</i></h4>
+</div>
+
+<div align="center">
     <table border="1" cellpadding="5">
         <tr>
             <th>Index</th>

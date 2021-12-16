@@ -16,15 +16,29 @@ import java.util.List;
 public class UserService {
     private final UserDAO userDAO;
 
-    public UserService() {
+    private HttpServletRequest request;
+    private HttpServletResponse response;
+
+    public UserService(HttpServletRequest request, HttpServletResponse response) {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         this.userDAO = new UserDAO(entityManager);
+        this.request = request;
+        this.response = response;
     }
 
-    public void listUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void listUser()
+            throws ServletException, IOException {
+        listUser( null);
+    }
+
+    public void listUser(String message)
+            throws ServletException, IOException {
         List<Users> usersList = userDAO.listAll();
         request.setAttribute("users", usersList);
+
+        if (message != null)
+            request.setAttribute("message", message);
 
         String listPage = "user_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
@@ -32,7 +46,7 @@ public class UserService {
         requestDispatcher.forward(request, response);
     }
 
-    public void createUser(HttpServletRequest request, HttpServletResponse response) {
+    public void createUser() {
         String email = request.getParameter("email");
         String fullName = request.getParameter("fullname");
         String password = request.getParameter("password");

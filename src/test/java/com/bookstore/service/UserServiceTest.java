@@ -14,7 +14,7 @@ class UserServiceTest {
 
     @BeforeAll
     static void setUpClass() {
-        userService = new UserService();
+//        userService = new UserService();
     }
 
     @Test
