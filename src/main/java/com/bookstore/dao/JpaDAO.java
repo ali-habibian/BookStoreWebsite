@@ -1,7 +1,6 @@
 package com.bookstore.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Query;
 import java.util.List;
 
@@ -53,5 +52,16 @@ public class JpaDAO<E> {
     public List<E> findWithNamedQuery(String queryName) {
         Query query = entityManager.createNamedQuery(queryName);
         return (List<E>) query.getResultList();
+    }
+
+    public List<E> findWithNamedQuery(String queryName, String paramName, Object paramValue) {
+        Query query = entityManager.createNamedQuery(queryName);
+        query.setParameter(paramName, paramValue);
+        return (List<E>) query.getResultList();
+    }
+
+    public long countWithNamedQuery(String queryName) {
+        Query query = entityManager.createNamedQuery(queryName);
+        return (long) query.getSingleResult();
     }
 }

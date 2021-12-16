@@ -3,7 +3,6 @@ package com.bookstore.dao;
 import com.bookstore.entity.Users;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
@@ -26,6 +25,16 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
         return super.find(Users.class, userId);
     }
 
+    public Users findByEmail(String email) {
+        List<Users> usersList = super.findWithNamedQuery("Users.findByEmail", "email", email);
+
+        if (usersList != null && usersList.size() > 0) {
+            return usersList.get(0);
+        }
+
+        return null;
+    }
+
     @Override
     public void delete(Object userId) {
         super.delete(Users.class, userId);
@@ -38,6 +47,6 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
     @Override
     public long count() {
-        return 0;
+        return super.countWithNamedQuery("Users.countAll");
     }
 }

@@ -103,6 +103,49 @@ class UserDAOTest {
         assertTrue(users.size() > 0);
     }
 
+    @Test
+    void create() {
+    }
+
+    @Test
+    void update() {
+    }
+
+    @Test
+    void get() {
+    }
+
+    @Test
+    void test_findByEmail_user_not_exist() {
+        String email = "ali@mailll.com";
+        Users user = userDAO.findByEmail(email);
+
+        assertNull(user);
+    }
+
+    @Test
+    void test_findByEmail_user_exist() {
+        String email = "test_7@mail.com";
+        Users user = userDAO.findByEmail(email);
+
+        assertNotNull(user);
+    }
+
+    @Test
+    void delete() {
+    }
+
+    @Test
+    void listAll() {
+    }
+
+    @Test
+    void test_count() {
+        long count = userDAO.count();
+
+        assertEquals(8, count);
+    }
+
     @AfterAll
     static void tearDownClass() {
         entityManager.close();

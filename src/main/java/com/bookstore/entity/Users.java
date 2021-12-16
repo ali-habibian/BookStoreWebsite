@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "Users.findAll", query = "select u from Users u order by u.userId desc")
+        @NamedQuery(name = "Users.findAll", query = "select u from Users u order by u.userId desc"),
+        @NamedQuery(name="Users.findByEmail", query = "select u from Users u where u.email = :email"),
+        @NamedQuery(name = "Users.countAll", query = "select Count(*) from Users u")
 })
 public class Users {
     private Integer userId;
