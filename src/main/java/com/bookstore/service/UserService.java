@@ -64,4 +64,14 @@ public class UserService {
             listUser("New user created successfully");
         }
     }
+
+    public void editUser() throws ServletException, IOException {
+        int userId = Integer.parseInt(request.getParameter("id"));
+        Users user = userDAO.get(userId);
+
+        String editPage = "user_form.jsp";
+        request.setAttribute("user", user);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
+        dispatcher.forward(request, response);
+    }
 }

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Create New User - Bookstore Administration</title>
@@ -14,7 +15,10 @@
 <jsp:directive.include file="header.jsp"/>
 
 <div align="center">
-    <h2>Create New User</h2>
+    <h2>
+        <c:if test="${user != null}">Edit User</c:if>
+        <c:if test="${user == null}">Create New User</c:if>
+    </h2>
 </div>
 
 <div align="center">
@@ -22,26 +26,32 @@
         <table cellpadding="5">
             <tr>
                 <td>Email:</td>
-                <td><label for="email"><input id="email" type="text" name="email" size="20"></label></td>
+                <td><label for="email"><input id="email" type="text" name="email" size="20"
+                                              value="${user.email}"></label></td>
             </tr>
 
             <tr>
                 <td>Full Name:</td>
-                <td><label for="fullName"><input id="fullName" type="text" name="fullname" size="20"></label></td>
+                <td><label for="fullName"><input id="fullName" type="text" name="fullname" size="20"
+                                                 value="${user.fullName}"></label></td>
             </tr>
 
             <tr>
                 <td>Password:</td>
-                <td><label for="password"><input id="password" type="password" name="password" size="20"></label>
+                <td><label for="password"><input id="password" type="password" name="password" size="20"
+                                                 value="${user.password}"></label>
                 </td>
             </tr>
 
-            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
 
             <tr>
                 <td colspan="2" align="center">
                     <label for="btn_save_id"><input id="btn_save_id" type="submit" value="Save" size="20"></label>
-                    <label for="btn_cancel_id"><input id="btn_cancel_id" type="button" value="Cancel" onclick="history.go(-1)"></label>
+                    <label for="btn_cancel_id"><input id="btn_cancel_id" type="button" value="Cancel"
+                                                      onclick="history.go(-1)"></label>
                 </td>
             </tr>
         </table>
@@ -52,24 +62,24 @@
 </body>
 
 <script>
-    function validateFormInput(){
+    function validateFormInput() {
         const fieldEmail = document.getElementById("email");
         const fieldFullName = document.getElementById("fullName");
         const fieldPassword = document.getElementById("password");
 
-        if (fieldEmail.value.length === 0){
+        if (fieldEmail.value.length === 0) {
             alert("Email is required!");
             fieldEmail.focus();
             return false;
         }
 
-        if (fieldFullName.value.length === 0){
+        if (fieldFullName.value.length === 0) {
             alert("Full Name is required!");
             fieldEmail.focus();
             return false;
         }
 
-        if (fieldPassword.value.length === 0){
+        if (fieldPassword.value.length === 0) {
             alert("Password is required!");
             fieldEmail.focus();
             return false;
