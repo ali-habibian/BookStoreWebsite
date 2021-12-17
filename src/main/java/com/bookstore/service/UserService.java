@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class UserService {
     private final UserDAO userDAO;
@@ -73,5 +74,30 @@ public class UserService {
         request.setAttribute("user", user);
         RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
         dispatcher.forward(request, response);
+    }
+
+    public void updateUser() throws ServletException, IOException {
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        String email = request.getParameter("email");
+        String fullName = request.getParameter("fullname");
+        String password = request.getParameter("password");
+
+        Users userById = userDAO.get(userId);
+        Users userByEmail = userDAO.findByEmail(email);
+
+        if (userByEmail != null && !Objects.equals(userByEmail.getUserId(), userById.getUserId())) {
+            String message = "Could not update user. User with email " + email + " already exists.";
+            request.setAttribute("message", message);
+
+            String editPage = "message.jsp";
+            RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
+            dispatcher.forward(request, response);
+        } else {
+            Users user = new Users(userId, email, fullName, password);
+            userDAO.update(user);
+
+            String message = "User has been updated successfully";
+            listUser(message);
+        }
     }
 }

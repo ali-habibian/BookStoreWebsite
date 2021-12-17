@@ -22,40 +22,47 @@
 </div>
 
 <div align="center">
-    <form action="create_user" method="post" onsubmit="return validateFormInput()">
-        <table cellpadding="5">
-            <tr>
-                <td>Email:</td>
-                <td><label for="email"><input id="email" type="text" name="email" size="20"
-                                              value="${user.email}"></label></td>
-            </tr>
+        <c:if test="${user != null}">
+            <form action="update_user" method="post" onsubmit="return validateFormInput()">
+                <input type="hidden" name="userId" value="${user.userId}">
+        </c:if>
+        <c:if test="${user == null}">
+            <form action="create_user" method="post" onsubmit="return validateFormInput()">
+        </c:if>
 
-            <tr>
-                <td>Full Name:</td>
-                <td><label for="fullName"><input id="fullName" type="text" name="fullname" size="20"
-                                                 value="${user.fullName}"></label></td>
-            </tr>
+            <table cellpadding="5">
+                <tr>
+                    <td>Email:</td>
+                    <td><label for="email"><input id="email" type="text" name="email" size="20"
+                                                  value="${user.email}"></label></td>
+                </tr>
 
-            <tr>
-                <td>Password:</td>
-                <td><label for="password"><input id="password" type="password" name="password" size="20"
-                                                 value="${user.password}"></label>
-                </td>
-            </tr>
+                <tr>
+                    <td>Full Name:</td>
+                    <td><label for="fullName"><input id="fullName" type="text" name="fullname" size="20"
+                                                     value="${user.fullName}"></label></td>
+                </tr>
 
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><label for="password"><input id="password" type="password" name="password" size="20"
+                                                     value="${user.password}"></label>
+                    </td>
+                </tr>
 
-            <tr>
-                <td colspan="2" align="center">
-                    <label for="btn_save_id"><input id="btn_save_id" type="submit" value="Save" size="20"></label>
-                    <label for="btn_cancel_id"><input id="btn_cancel_id" type="button" value="Cancel"
-                                                      onclick="history.go(-1)"></label>
-                </td>
-            </tr>
-        </table>
-    </form>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center">
+                        <label for="btn_save_id"><input id="btn_save_id" type="submit" value="Save" size="20"></label>
+                        <label for="btn_cancel_id"><input id="btn_cancel_id" type="button" value="Cancel"
+                                                          onclick="history.go(-1)"></label>
+                    </td>
+                </tr>
+            </table>
+        </form>
 </div>
 
 <jsp:directive.include file="footer.jsp"/>
