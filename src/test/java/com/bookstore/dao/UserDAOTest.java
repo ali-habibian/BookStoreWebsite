@@ -104,18 +104,6 @@ class UserDAOTest {
     }
 
     @Test
-    void create() {
-    }
-
-    @Test
-    void update() {
-    }
-
-    @Test
-    void get() {
-    }
-
-    @Test
     void test_findByEmail_user_not_exist() {
         String email = "ali@mailll.com";
         Users user = userDAO.findByEmail(email);
@@ -129,14 +117,6 @@ class UserDAOTest {
         Users user = userDAO.findByEmail(email);
 
         assertNotNull(user);
-    }
-
-    @Test
-    void delete() {
-    }
-
-    @Test
-    void listAll() {
     }
 
     @Test
