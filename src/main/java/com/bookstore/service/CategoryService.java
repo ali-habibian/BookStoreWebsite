@@ -27,12 +27,35 @@ public class CategoryService {
     }
 
     public void listCategory() throws ServletException, IOException {
+        listCategory(null);
+    }
+
+    public void listCategory(String message) throws ServletException, IOException {
         List<Category> categoryList = categoryDAO.listAll();
         request.setAttribute("categoryList", categoryList);
 
+        if (message != null)
+            request.setAttribute("message", message);
+
         String listPage = "category_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-
         requestDispatcher.forward(request, response);
+    }
+
+    public void createCategory() throws ServletException, IOException {
+        String categoryName = request.getParameter("name");
+
+        Category existCategory = categoryDAO.findByName(categoryName);
+        if (existCategory != null) {
+            String message = "Could not create category. A category with name " + categoryName + " already exists.";
+            request.setAttribute("message", message);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+            requestDispatcher.forward(request, response);
+        } else {
+            Category category = new Category(categoryName);
+            categoryDAO.create(category);
+
+            listCategory("New category created successfully");
+        }
     }
 }

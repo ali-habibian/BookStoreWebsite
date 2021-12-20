@@ -108,4 +108,19 @@ class CategoryDAOTest extends BaseDAOTest{
         assertEquals(2, count);
     }
 
+    @Test
+    void test_findByName_exist_category() {
+        String catName = "Java";
+        Category category = categoryDAO.findByName(catName);
+
+        assertNotNull(category);
+    }
+
+    @Test
+    void test_findByName_not_exist_category() {
+        String catName = "Javaaaaa";
+        Category category = categoryDAO.findByName(catName);
+
+        assertNull(category);
+    }
 }

@@ -27,13 +27,11 @@ public class UserService {
         this.response = response;
     }
 
-    public void listUser()
-            throws ServletException, IOException {
+    public void listUser() throws ServletException, IOException {
         listUser(null);
     }
 
-    public void listUser(String message)
-            throws ServletException, IOException {
+    public void listUser(String message) throws ServletException, IOException {
         List<Users> usersList = userDAO.listAll();
         request.setAttribute("users", usersList);
 
@@ -42,7 +40,6 @@ public class UserService {
 
         String listPage = "user_list.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-
         requestDispatcher.forward(request, response);
     }
 

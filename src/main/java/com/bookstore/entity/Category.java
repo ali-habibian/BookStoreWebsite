@@ -8,7 +8,8 @@ import java.util.Set;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "Category.findAll", query = "select c from Category c order by c.id desc"),
-        @NamedQuery(name = "Category.countAll", query = "select Count(*) from Category c")
+        @NamedQuery(name = "Category.countAll", query = "select Count(*) from Category c"),
+        @NamedQuery(name = "Category.findByName", query = "select c from Category c where c.name = :name")
 })
 public class Category {
     @Id
