@@ -11,25 +11,22 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UserDAOTest {
+class UserDAOTest extends BaseDAOTest {
 
-    private static EntityManagerFactory entityManagerFactory;
-    private static EntityManager entityManager;
     private static UserDAO userDAO;
 
     @BeforeAll
     static void setUpClass() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("BookStoreWebsite");
-        entityManager = entityManagerFactory.createEntityManager();
+        BaseDAOTest.setUp();
         userDAO = new UserDAO(entityManager);
     }
 
     @Test
     void test_create_user() {
         Users user = new Users();
-        user.setFullName("User Test 3");
-        user.setEmail("test_3@mail.com");
-        user.setPassword("12345");
+        user.setFullName("User Test 1");
+        user.setEmail("test_1@mail.com");
+        user.setPassword("12");
 
         user = userDAO.create(user);
 
@@ -97,7 +94,7 @@ class UserDAOTest {
     }
 
     @Test
-    void test_list_all_users(){
+    void test_list_all_users() {
         List<Users> users = userDAO.listAll();
         users.forEach(u -> System.out.println(u.getFullName()));
         assertTrue(users.size() > 0);
@@ -128,7 +125,6 @@ class UserDAOTest {
 
     @AfterAll
     static void tearDownClass() {
-        entityManager.close();
-        entityManagerFactory.close();
+        BaseDAOTest.tearDown();
     }
 }

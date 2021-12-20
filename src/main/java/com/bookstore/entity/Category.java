@@ -6,6 +6,10 @@ import java.util.Set;
 
 @Table(name = "category")
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Category.findAll", query = "select c from Category c order by c.id desc"),
+        @NamedQuery(name = "Category.countAll", query = "select Count(*) from Category c")
+})
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +21,14 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<Book> books = new LinkedHashSet<>();
+
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public Category() {
+
+    }
 
     public Set<Book> getBooks() {
         return books;
