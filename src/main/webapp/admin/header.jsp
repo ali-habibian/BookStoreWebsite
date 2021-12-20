@@ -9,7 +9,7 @@
     <div>
         <b>
             <a href="user_list">Users</a> |
-            <a href="#">Categories</a> |
+            <a href="category_list">Categories</a> |
             <a href="#">Books</a> |
             <a href="#">Customers</a> |
             <a href="#">Reviews</a> |
