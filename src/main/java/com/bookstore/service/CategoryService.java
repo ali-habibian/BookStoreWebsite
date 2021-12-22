@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class CategoryService {
     private final CategoryDAO categoryDAO;
@@ -56,6 +57,36 @@ public class CategoryService {
             categoryDAO.create(category);
 
             listCategory("New category created successfully");
+        }
+    }
+
+    public void editCategory() throws ServletException, IOException {
+        int categoryId = Integer.parseInt(request.getParameter("id"));
+        Category category = categoryDAO.get(categoryId);
+        request.setAttribute("category", category);
+
+        String editPage = "category_form.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
+        requestDispatcher.forward(request, response);
+    }
+
+    public void updateCategory() throws ServletException, IOException {
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        String categoryName = request.getParameter("name");
+
+        Category categoryById = categoryDAO.get(categoryId);
+        Category categoryByName = categoryDAO.findByName(categoryName);
+        if (categoryByName != null && !Objects.equals(categoryById.getId(), categoryByName.getId())) {
+            String message = "Could not update category. A category with name " + categoryName + " already exists.";
+            request.setAttribute("message", message);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            categoryById.setName(categoryName);
+            categoryDAO.update(categoryById);
+            String message = "Category has been updated successfully";
+            listCategory(message);
         }
     }
 }
