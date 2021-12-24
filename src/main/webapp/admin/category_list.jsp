@@ -3,40 +3,47 @@
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/bootstrap.min.js"></script>
     <title>Category List - Bookstore Administration</title>
 </head>
-<body>
+<body class="container text-center">
 <jsp:directive.include file="header.jsp"/>
 
-<div align="center">
-    <h2>Category Management</h2>
-    <h3><a href="category_form.jsp">Create New Category</a></h3>
+<div class="row text-center">
+    <h2 class="mt-4">Category Management</h2>
+    <h3 class="mt-2"><a class="btn btn-dark text-white" href="category_form.jsp">Create New Category</a></h3>
 </div>
 
-<div align="center">
+<div>
     <h4><i>${message}</i></h4>
 </div>
 
-<div align="center">
-    <table border="1" cellpadding="5">
+<div class="row mx-auto col-5">
+    <table class="table text-center">
+        <thead class="table-dark">
         <tr>
             <th>Index</th>
             <th>ID</th>
             <th>Name</th>
             <th>Actions</th>
         </tr>
-
+        </thead>
+        <tbody>
         <c:forEach items="${categoryList}" var="category" varStatus="status">
             <tr>
                 <td>${status.index + 1}</td>
                 <td>${category.id}</td>
                 <td>${category.name}</td>
                 <td>
-                    <a href="edit_category?id=${category.id}">Edit</a> &nbsp;
-                    <a href="javascript:confirmDelete(${category.id})">Delete</a>
+                    <a class="btn btn-dark text-white" href="edit_category?id=${category.id}">Edit</a> &nbsp;
+                    <a class="btn btn-dark text-white" href="javascript:confirmDelete(${category.id})">Delete</a>
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 

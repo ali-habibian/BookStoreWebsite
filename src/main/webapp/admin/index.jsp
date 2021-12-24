@@ -1,60 +1,49 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Ali
-  Date: 11/27/2021
-  Time: 1:52 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/bootstrap.min.js"></script>
     <title>Bookstore Administration</title>
 </head>
-<body>
+<body class="container text-center">
 <jsp:directive.include file="header.jsp"/>
 
-<div align="center">
-    <h2>Administrative Dashboard</h2>
+<div>
+    <h2 class="mt-4">Administrative Dashboard</h2>
 </div>
 
-<div align="center">
-    <hr width="60%"/>
-
-    <div>
-        <h2><b>Quick Actions:</b></h2>
-        <b>
-            <a href="#">New Book</a> |
-            <a href="#">New User</a> |
-            <a href="#">New Category</a> |
-            <a href="#">New Customer</a>
-        </b>
+<div class="pt-3">
+    <hr class="row col-9 mx-auto"/>
+    <div class="row mx-auto text-center justify-content-center">
+        <h3 class="mb-2">Quick Actions:</h3>
+            <a class="btn btn-dark p-1 me-2 col-2 text-white" href="#">New Book</a>
+            <a class="btn btn-dark p-1 me-2 col-2 text-white" href="#">New User</a>
+            <a class="btn btn-dark p-1 me-2 col-2 text-white" href="#">New Category</a>
+            <a class="btn btn-dark p-1 me-2 col-2 text-white" href="#">New Customer</a>
     </div>
 </div>
 
-<div align="center">
-    <hr width="60%"/>
-
-    <div>
-        <h2><b>Recent Sales:</b></h2>
+<div class="pt-3">
+    <hr class="row col-9 mx-auto"/>
+    <div class="row mx-auto text-center justify-content-center">
+        <h3 class="mb-2">Recent Sales:</h3>
     </div>
 </div>
 
-<div align="center">
-    <hr width="60%"/>
-
-    <div>
-        <h2><b>Recent Reviews:</b></h2>
+<div class="pt-3">
+    <hr class="row col-9 mx-auto"/>
+    <div class="row mx-auto text-center justify-content-center">
+        <h3 class="mb-2">Recent Reviews:</h3>
     </div>
 </div>
 
-<div align="center">
-    <hr width="60%"/>
+<div class="pt-3">
+    <hr class="row col-9 mx-auto"/>
+    <h3 class="mb-2">Statics:</h3>
 
-    <div>
-        <h2><b>Statics:</b></h2>
-    </div>
-
-    <hr width="60%"/>
+    <hr class="row col-9 mx-auto"/>
 </div>
 
 <jsp:directive.include file="footer.jsp"/>

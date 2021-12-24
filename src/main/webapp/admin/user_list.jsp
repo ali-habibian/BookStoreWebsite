@@ -1,32 +1,29 @@
-<%@ page import="com.bookstore.entity.Users" %>
-<%@ page import="java.util.List" %><%--
-  Created by IntelliJ IDEA.
-  User: Ali
-  Date: 12/5/2021
-  Time: 5:22 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/bootstrap.min.js"></script>
     <title>User List - Bookstore Administration</title>
 </head>
-<body>
+<body class="container text-center">
 <jsp:directive.include file="header.jsp"/>
 
-<div align="center">
-    <h2>User Management</h2>
-    <h3><a href="user_form.jsp">Create New User</a></h3>
+<div class="row text-center">
+    <h2 class="mt-4">User Management</h2>
+    <h3 class="mt-2"><a class="btn btn-dark text-white" href="user_form.jsp">Create New User</a></h3>
 </div>
 
-<div align="center">
+<div>
     <h4><i>${message}</i></h4>
 </div>
 
-<div align="center">
-    <table border="1" cellpadding="5">
+<div class="row mx-auto col-7">
+    <table class="table text-center">
+        <thead class="table-dark">
         <tr>
             <th>Index</th>
             <th>ID</th>
@@ -34,7 +31,8 @@
             <th>Full Name</th>
             <th>Actions</th>
         </tr>
-
+        </thead>
+        <tbody>
         <c:forEach items="${users}" var="user" varStatus="status">
             <tr>
                 <td>${status.index + 1}</td>
@@ -42,11 +40,12 @@
                 <td>${user.email}</td>
                 <td>${user.fullName}</td>
                 <td>
-                    <a href="edit_user?id=${user.userId}">Edit</a> &nbsp;
-                    <a href="javascript:confirmDelete(${user.userId})">Delete</a>
+                    <a class="btn btn-dark text-white" href="edit_user?id=${user.userId}">Edit</a>
+                    <a class="btn btn-dark text-white" href="javascript:confirmDelete(${user.userId})">Delete</a>
                 </td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
 </div>
 
@@ -55,7 +54,7 @@
 <script>
     function confirmDelete(userId) {
         if (confirm("Are you sure you want to delete the user with ID " + userId + "?")) {
-           window.location = "delete_user?id=" + userId;
+            window.location = "delete_user?id=" + userId;
         }
     }
 </script>

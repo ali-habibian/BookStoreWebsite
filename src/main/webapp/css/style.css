@@ -1,0 +1,35 @@
+#header-menu {
+    display: table;
+}
+
+.menu-item {
+    display: table-cell;
+    padding-right: 8px;
+}
+
+a:link{
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+a:visited{
+    color: indigo;
+}
+
+a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+a:active{
+    color: red;
+}
+
+#header-menu a:link{
+    font-size: large;
+    font-stretch: condensed;
+}
+
+.page-heading{
+    color: midnightblue;
+}
